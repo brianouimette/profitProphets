@@ -1,0 +1,66 @@
+# Environment variables (NEVER commit these!)
+.env
+env.test
+*.env
+*.env.local
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Database credentials
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ML Models
+ml_models/
+*.pkl
+*.h5
+*.joblib
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Test outputs
+coverage/
+.nyc_output/
+
+# Large CSV data files (optional - can track if needed, but they're large)
+# Uncomment to exclude:
+# *.csv
+# historical_data/
+
+# Analysis outputs (can track these if useful)
+# *_analysis.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+
+# Package lock files (optional - some teams prefer to track these)
+# Uncomment if you want to exclude:
+# package-lock.json
+# yarn.lock
+

@@ -1,0 +1,105 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Project status and post-work updates
+globs: 
+alwaysApply: true
+---
+# Project Plan Format Standards
+
+## Required Plan Structure
+
+Every project plan must include these sections:
+
+```markdown
+# Project Plan - [Project Name]
+
+## Current Status
+- **Phase**: [Current development phase]
+- **Last Updated**: [Date]
+- **Next Milestone**: [Target date and goals]
+- **Overall Progress**: [X/Y milestones completed]
+
+## User Personas
+### User Persona: [Persona Name]
+- **Primary User**: [Brief description of user type and context]
+- **Pain Points**: [List 2-4 key problems this user faces]
+- **Goals**: [List 2-4 primary objectives this user wants to achieve]
+- **Context**: [When/where/how they use the solution - optional]
+
+[Additional personas as needed]
+
+## Milestones
+### [Milestone Name] - [Status] - [Target Date]
+**Goal**: [Brief description of milestone objective]
+**Progress**: [X/Y tasks completed] ([percentage]%)
+
+- [ ] Task 1 - [Brief description]
+- [x] Completed task - [Brief description]
+- [🔄] In progress task - [Current status]
+- [🚫] Blocked task - [Reason for block]
+- [📝] New task discovered - [Why needed]
+
+**Dependencies**: [List any dependencies]
+**Risks**: [Known risks or concerns]
+
+## Architecture Decisions
+- **[Date]**: [Decision] - [Rationale and alternatives considered]
+
+## Known Issues & Blockers
+- **[Issue]**: [Description, impact, and resolution plan]
+
+## Future Considerations
+- [Items for later milestones or post-MVP]
+
+## Change Log
+- **[Date]**: [Summary of changes made to plan]
+```
+
+## Status Indicators
+
+### Task Status
+- `[ ]` **Planned**: Not yet started
+- `[🔄]` **In Progress**: Currently being worked on
+- `[x]` **Completed**: Finished and verified
+- `[🚫]` **Blocked**: Cannot proceed (include reason)
+- `[📝]` **New**: Discovered during work
+- `[⏸️]` **Paused**: Temporarily deprioritized
+- `[🔍]` **Investigating**: Researching approach
+
+### Milestone Status
+- **🎯 Active**: Currently being worked on
+- **✅ Complete**: All tasks finished
+- **📋 Planned**: Scheduled for future
+- **🚫 Blocked**: Cannot proceed
+- **🔄 In Progress**: Some tasks completed
+
+## Quality Standards
+
+### Plan Maintenance
+- Update **Last Updated** date with every change
+- Remove completed items after milestone closure
+- Keep future items realistic and well-defined
+- Maintain clear, actionable task descriptions
+
+### Consistency Requirements
+- Task descriptions should be specific and measurable
+- Dependencies must be clearly identified
+- Blockers must include resolution plans
+- Architecture decisions must include rationale
+
+### Review Triggers
+Update plan when:
+- Starting new work
+- Completing tasks
+- Discovering new requirements
+- Encountering blockers
+- Making architecture decisions
+- Changing priorities
+
+---
+
+**Maintain this format consistently to ensure the plan remains useful and actionable.**

@@ -1,0 +1,89 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Project status and post-work updates
+globs: 
+alwaysApply: true
+---
+# Post-Work Plan Updates
+
+## Required Updates After Completing Work
+
+### 1. Status Updates
+Update the project plan to reflect:
+- ✅ **Completed tasks/features**
+- 🔄 **Modified scope or approach** 
+- 🚫 **Blocked items** with clear reasons
+- 📝 **New tasks discovered** during work
+- 🎯 **Updated priorities or timelines**
+
+### 2. Progress Tracking
+- Mark completed items with ✅
+- Update in-progress items with current status
+- Add newly discovered tasks to appropriate milestones
+- Note any changes to estimates or dependencies
+
+### 3. Documentation Sync
+Ensure consistency between:
+- Project plan and implementation
+- README and current capabilities
+- Architecture decisions and code
+- Dependencies and actual requirements
+
+## Update Templates
+
+### Completion Update
+```
+## Work Completed: [Date]
+### ✅ Completed
+- [Task/feature completed]
+- [Another completed item]
+
+### 🔄 Modified
+- [Item]: [How it changed and why]
+
+### 📝 New Tasks Discovered
+- [New task]: [Why needed, which milestone]
+
+### 🎯 Updated Estimates
+- [Task]: [Old estimate] → [New estimate] ([Reason])
+```
+
+### Milestone Progress
+```
+### [Milestone Name] - [Updated Status]
+Progress: [X/Y tasks completed] ([percentage]%)
+- [x] Completed task
+- [🔄] In progress task (current status)
+- [ ] Pending task
+- [📝] Newly discovered task
+- [🚫] Blocked task (reason and impact)
+```
+
+## Quality Checks
+
+Before finalizing updates:
+- ✅ All completed work is marked
+- ✅ New discoveries are captured
+- ✅ Blockers are documented with reasons
+- ✅ Timeline impacts are noted
+- ✅ Next steps are clear
+
+## Integration Notes
+
+### Commit Messages
+Reference plan updates in commits:
+```
+feat: implement feature X
+
+- Completes milestone 1.2 task "Feature X"
+- Updates project plan with completion status
+- Discovered need for additional validation (added to milestone 1.3)
+```
+
+---
+
+**Always update the plan immediately after completing work - don't let it become stale.**

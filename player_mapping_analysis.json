@@ -1,0 +1,257 @@
+{
+  "analysis_timestamp": "2025-10-21T15:39:54.893003",
+  "data_sources": {
+    "historical_players": 4831,
+    "historical_teams": 30,
+    "mysportsfeeds_players": 5,
+    "mysportsfeeds_teams": 5
+  },
+  "name_patterns": {
+    "total_players": 4831,
+    "name_variations": {},
+    "common_patterns": [],
+    "special_characters": [
+      "Zaid Abdul-Aziz",
+      "Kareem Abdul-Jabbar",
+      "Mahmoud Abdul-Rauf",
+      "Tariq Abdul-Wahad",
+      "Shareef Abdur-Rahim",
+      "DeVaughn Akoon-Purcell",
+      "Ty-Shon Alexander",
+      "Nickeil Alexander-Walker",
+      "Al-Farouq Aminu",
+      "O.G. Anunoby",
+      "B.J. Armstrong",
+      "D.J. Augustin",
+      "Patrick Baldwin Jr.",
+      "J.J. Barea",
+      "Keita Bates-Diop",
+      "DeAndre' Bembry",
+      "Marcus Bingham Jr.",
+      "George H. Bon Salle",
+      "Ruben Boumtje-Boumtje",
+      "A.J. Bramlett"
+    ],
+    "name_lengths": {
+      "min": 4,
+      "max": 24,
+      "mean": 12.533843924653281,
+      "median": 12.0
+    },
+    "first_name_patterns": {
+      "count": 4825,
+      "unique": 1568,
+      "most_common": {
+        "John": 87,
+        "Bob": 79,
+        "Jim": 62,
+        "Mike": 61,
+        "Chris": 55,
+        "Bill": 44,
+        "Joe": 44,
+        "Tom": 41,
+        "George": 37,
+        "Kevin": 36
+      }
+    },
+    "last_name_patterns": {
+      "count": 4831,
+      "unique": 2904,
+      "most_common": {
+        "Williams": 78,
+        "Johnson": 71,
+        "Jones": 56,
+        "Smith": 56,
+        "Brown": 42,
+        "Davis": 40,
+        "Jackson": 31,
+        "Green": 27,
+        "Robinson": 24,
+        "Thomas": 24
+      }
+    },
+    "full_name_patterns": {
+      "count": 4831,
+      "unique": 4791,
+      "most_common": {
+        "George Johnson": 3,
+        "Charles Smith": 3,
+        "Patrick Ewing": 2,
+        "Mike Dunleavy": 2,
+        "Gerald Henderson": 2,
+        "Charlie Davis": 2,
+        "Walker Russell": 2,
+        "Jim Paxson": 2,
+        "Chris Smith": 2,
+        "Mark Jones": 2
+      }
+    }
+  },
+  "team_correlations": {
+    "total_teams": 30,
+    "team_abbreviations": [
+      "ATL",
+      "BOS",
+      "CLE",
+      "NOP",
+      "CHI",
+      "DAL",
+      "DEN",
+      "GSW",
+      "HOU",
+      "LAC",
+      "LAL",
+      "MIA",
+      "MIL",
+      "MIN",
+      "BKN",
+      "NYK",
+      "ORL",
+      "IND",
+      "PHI",
+      "PHX",
+      "POR",
+      "SAC",
+      "SAS",
+      "OKC",
+      "TOR",
+      "UTA",
+      "MEM",
+      "WAS",
+      "DET",
+      "CHA"
+    ],
+    "team_names": [
+      "Atlanta Hawks",
+      "Boston Celtics",
+      "Cleveland Cavaliers",
+      "New Orleans Pelicans",
+      "Chicago Bulls",
+      "Dallas Mavericks",
+      "Denver Nuggets",
+      "Golden State Warriors",
+      "Houston Rockets",
+      "Los Angeles Clippers",
+      "Los Angeles Lakers",
+      "Miami Heat",
+      "Milwaukee Bucks",
+      "Minnesota Timberwolves",
+      "Brooklyn Nets",
+      "New York Knicks",
+      "Orlando Magic",
+      "Indiana Pacers",
+      "Philadelphia 76ers",
+      "Phoenix Suns",
+      "Portland Trail Blazers",
+      "Sacramento Kings",
+      "San Antonio Spurs",
+      "Oklahoma City Thunder",
+      "Toronto Raptors",
+      "Utah Jazz",
+      "Memphis Grizzlies",
+      "Washington Wizards",
+      "Detroit Pistons",
+      "Charlotte Hornets"
+    ],
+    "team_cities": [
+      "Atlanta",
+      "Boston",
+      "Cleveland",
+      "New Orleans",
+      "Chicago",
+      "Dallas",
+      "Denver",
+      "Golden State",
+      "Houston",
+      "Los Angeles",
+      "Los Angeles",
+      "Miami",
+      "Milwaukee",
+      "Minnesota",
+      "Brooklyn",
+      "New York",
+      "Orlando",
+      "Indiana",
+      "Philadelphia",
+      "Phoenix",
+      "Portland",
+      "Sacramento",
+      "San Antonio",
+      "Oklahoma City",
+      "Toronto",
+      "Utah",
+      "Memphis",
+      "Washington",
+      "Detroit",
+      "Charlotte"
+    ]
+  },
+  "mapping_strategy": {
+    "approach": "Multi-layered matching with confidence scoring",
+    "layers": [
+      {
+        "name": "Exact Name Match",
+        "description": "Direct first_name + last_name match",
+        "confidence": 1.0,
+        "fallback": false
+      },
+      {
+        "name": "Normalized Name Match",
+        "description": "Normalized name matching (removes special chars, case insensitive)",
+        "confidence": 0.9,
+        "fallback": true
+      },
+      {
+        "name": "Fuzzy Name Match",
+        "description": "Fuzzy string matching with similarity threshold",
+        "confidence": 0.8,
+        "fallback": true
+      },
+      {
+        "name": "Team + Name Match",
+        "description": "Team correlation + name matching",
+        "confidence": 0.85,
+        "fallback": true
+      },
+      {
+        "name": "Jersey Number + Team Match",
+        "description": "Jersey number + team matching (if available)",
+        "confidence": 0.7,
+        "fallback": true
+      }
+    ],
+    "confidence_thresholds": {
+      "high_confidence": 0.9,
+      "medium_confidence": 0.8,
+      "low_confidence": 0.7,
+      "manual_review": 0.6
+    },
+    "name_normalization": {
+      "remove_special_chars": true,
+      "case_insensitive": true,
+      "remove_suffixes": [
+        "jr",
+        "sr",
+        "ii",
+        "iii",
+        "iv",
+        "v"
+      ],
+      "remove_prefixes": [],
+      "handle_apostrophes": true
+    },
+    "team_matching": {
+      "use_abbreviations": true,
+      "use_full_names": true,
+      "use_cities": true,
+      "fuzzy_team_matching": true
+    }
+  },
+  "recommendations": [
+    "Use multi-layered matching approach with confidence scoring",
+    "Implement name normalization for better matching",
+    "Use team correlation as secondary matching criteria",
+    "Create manual review process for low-confidence matches",
+    "Build mapping table for future reference and updates"
+  ]
+}

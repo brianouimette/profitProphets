@@ -1,0 +1,120 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Project status and post-work updates
+globs: 
+alwaysApply: true
+---
+
+# Project Plan Conflict Resolution
+
+## Conflict Detection
+
+### Common Conflict Types
+- **Scope creep**: Request adds features not in current milestone
+- **Priority conflicts**: Request changes established priorities
+- **Dependency violations**: Request skips required prerequisites
+- **Timeline conflicts**: Request affects milestone deadlines
+- **Architecture conflicts**: Request contradicts planned approach
+
+### Early Warning Signs
+- Request mentions features not in plan
+- User asks to "quickly add" something
+- Request requires significant refactoring
+- Work would affect multiple milestones
+- Request changes core assumptions
+
+## Resolution Protocol
+
+### 1. Immediate Assessment
+When conflict detected:
+```
+🚨 **Plan Conflict Detected**
+- **Request**: [Summary of user request]
+- **Conflict**: [How it conflicts with current plan]
+- **Impact**: [Timeline, scope, or dependency effects]
+- **Current Milestone**: [What would be affected]
+```
+
+### 2. Impact Analysis
+Evaluate:
+- **Timeline impact**: How much delay would this cause?
+- **Scope impact**: How much additional work is required?
+- **Dependency impact**: What other tasks would be affected?
+- **Risk impact**: What new risks does this introduce?
+
+### 3. Resolution Options
+Present clear options:
+
+#### Option A: Adjust Plan
+- Modify current milestone to include request
+- Update timeline and dependencies
+- Reassess priorities
+
+#### Option B: Defer Request
+- Add to future milestone
+- Maintain current plan integrity
+- Explain rationale for deferral
+
+#### Option C: Compromise Solution
+- Implement minimal version now
+- Plan full implementation for later
+- Identify what can be done within current scope
+
+### 4. User Decision Required
+```
+📋 **Resolution Required**
+
+**Options:**
+1. **Adjust Plan**: [Description and impacts]
+2. **Defer Request**: [When it could be addressed]
+3. **Compromise**: [What can be done now vs later]
+
+**Recommendation**: [Your suggested approach with rationale]
+
+**Please choose how to proceed before I continue.**
+```
+
+## Communication Guidelines
+
+### Be Clear and Direct
+- State conflicts explicitly
+- Explain implications clearly
+- Don't minimize the impact
+- Provide specific options
+
+### Stay Solution-Focused
+- Always offer multiple options
+- Explain trade-offs clearly
+- Recommend the best path forward
+- Respect user's final decision
+
+### Document Decisions
+After resolution:
+- Update plan with decision made
+- Note rationale for future reference
+- Adjust affected milestones
+- Update timeline if needed
+
+## Special Cases
+
+### Urgent Requests
+If user indicates urgency:
+1. Acknowledge the urgency
+2. Still explain the conflict
+3. Offer expedited options
+4. Get explicit approval for plan changes
+
+### Stakeholder Pressure
+If request comes from stakeholders:
+1. Respect the business context
+2. Explain technical implications
+3. Offer implementation strategies
+4. Document the decision rationale
+
+---
+
+**Never proceed with conflicting work without explicit user direction and plan updates.**

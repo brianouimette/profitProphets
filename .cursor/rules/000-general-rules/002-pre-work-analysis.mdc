@@ -1,0 +1,59 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: What to do before starting work in a project
+globs: 
+alwaysApply: true
+---
+
+# Pre-Work Analysis Protocol
+
+## Required Analysis Before Starting
+
+### 1. Plan Context Review
+Read and understand:
+- Current project phase/milestone
+- Planned features and priorities  
+- Known issues and blockers
+- Dependencies and prerequisites
+
+### 2. Request Alignment Check
+Verify if the user's request:
+- ✅ Fits within the current milestone
+- ⚠️ Requires addressing dependencies first
+- 🔄 Changes scope or priorities
+- 📝 Introduces new features not in plan
+
+### 3. Conflict Resolution
+If request conflicts with plan:
+1. **Highlight the conflict clearly**
+2. **Explain implications** (timeline, dependencies, scope)
+3. **Propose resolution options**:
+   - Adjust current milestone
+   - Defer to future milestone
+   - Modify request to fit plan
+4. **Wait for explicit user direction**
+
+### 4. Plan Update Proposals
+Suggest plan updates when request:
+- Introduces new features
+- Reveals new dependencies
+- Changes technical approach
+- Affects timeline estimates
+
+## Communication Template
+
+```
+📋 **Project Plan Check**
+- Current milestone: [milestone name]
+- Request alignment: [✅ aligned / ⚠️ dependency / 🔄 scope change]
+- Proposed plan updates: [list any needed updates]
+- Recommendation: [proceed / adjust plan / clarify scope]
+```
+
+---
+
+**Complete this analysis before any code changes or implementation work.**

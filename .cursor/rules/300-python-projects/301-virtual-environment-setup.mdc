@@ -1,0 +1,58 @@
+---
+description: Virtual environment rules
+globs: 
+alwaysApply: false
+---
+---
+description: Python virtual environment setup and management
+globs: ["**/pyproject.toml", "**/requirements.txt"]
+alwaysApply: true
+---
+
+1. Environment Setup
+   - Use `uv` for all virtual environment operations
+   - Create a virtual environment if none exists for the project
+   - Use Python version specified in pyproject.toml
+   - Keep virtual environment in .venv directory
+   - Add .venv to .gitignore
+   - Document Python version requirements
+
+2. Package Management
+   - Use `uv pip` for package installation
+   - Use `uv pip compile` for dependency resolution
+   - Use `uv pip sync` for environment synchronization
+   - Use `uv pip freeze` for dependency export
+   - Use `uv pip uninstall` for package removal
+   - Use `uv pip list` for package listing
+
+3. Dependency Management
+   - Use pyproject.toml for project metadata
+   - Use requirements.txt for deployment
+   - Pin all dependencies to specific versions
+   - Use dependency groups for development tools
+   - Keep development dependencies separate
+   - Document dependency update process
+
+4. Environment Variables
+   - Use python-dotenv for environment variables
+   - Keep .env files out of version control
+   - Document required environment variables
+   - Use .env.example for documentation
+   - Validate environment on startup
+   - Use secure defaults
+
+5. Development Tools
+   - Install development tools in virtual environment
+   - Use pre-commit for git hooks
+   - Configure black, isort, flake8
+   - Set up pytest configuration
+   - Configure coverage reporting
+   - Set up debugging tools
+
+6. Best Practices
+   - Activate virtual environment in shell
+   - Use virtual environment in IDE
+   - Keep virtual environment up to date
+   - Document setup process
+   - Use consistent Python version
+   - Follow security best practices

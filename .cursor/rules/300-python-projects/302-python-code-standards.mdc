@@ -1,0 +1,88 @@
+---
+description: python projects
+globs: 
+alwaysApply: false
+---
+---
+description: Python code style and quality standards
+globs: ["**/*.py"]
+alwaysApply: true
+---
+
+1. Code Style and Formatting
+   - Use Black for code formatting (line length: 88)
+   - Use isort for import sorting
+   - Use flake8 for linting
+   - Follow PEP 8 guidelines
+   - Use type hints for all function parameters and return values
+   - Use docstrings for all modules, classes, and functions (Google style)
+
+2. Project Structure
+   - Use src-layout for all projects:
+     ```
+     project/
+     ├── src/
+     │   └── package_name/
+     │       ├── __init__.py
+     │       └── module.py
+     ├── tests/
+     │   └── test_module.py
+     ├── pyproject.toml
+     ├── README.md
+     └── .gitignore
+     ```
+   - Keep package names lowercase with underscores
+   - Use absolute imports within the package
+   - Separate test files mirror the source structure
+
+3. Package Management
+   - Use `uv` for all package management operations
+   - Maintain dependencies in pyproject.toml
+   - Pin all dependencies to specific versions
+   - Use dependency groups for development tools
+   - Keep requirements.txt for deployment (generated from pyproject.toml)
+
+4. Code Organization
+   - Keep functions small and focused (max 20 lines)
+   - Use classes for complex state management
+   - Use dataclasses for data containers
+   - Use enums for constants
+   - Use type aliases for complex types
+   - Use pathlib for file operations
+   - Use context managers for resource management
+
+5. Error Handling
+   - Use custom exceptions for domain-specific errors
+   - Include meaningful error messages
+   - Use context managers for cleanup
+   - Log exceptions with appropriate context
+   - Use typing.Optional for nullable values
+
+6. Performance
+   - Use list comprehensions over map/filter
+   - Use generator expressions for large datasets
+   - Use sets for membership testing
+   - Use collections.defaultdict for counting
+   - Profile code before optimization
+
+7. Security
+   - Never store secrets in code
+   - Use environment variables for configuration
+   - Validate all user input
+   - Use parameterized queries for databases
+   - Use secure defaults for all operations
+
+8. Documentation
+   - Write docstrings for all public APIs
+   - Include examples in docstrings
+   - Keep README.md up to date
+   - Document all configuration options
+   - Include type hints in all signatures
+
+9. Best Practices
+   - Use dataclasses for data containers
+   - Use pathlib for file operations
+   - Use typing.Protocol for interfaces
+   - Use functools.lru_cache for expensive operations
+   - Use asyncio for I/O-bound operations
+   - Use multiprocessing for CPU-bound operations

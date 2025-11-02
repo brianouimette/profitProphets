@@ -1,0 +1,153 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Git and development workflow rules
+globs: 
+alwaysApply: true
+---
+
+# Development Workflow Integration
+
+## Code Development Integration
+
+### Commit Message Standards
+Reference plan updates in commit messages:
+```
+feat: implement user authentication
+
+- Completes milestone 1.2 task "User login system"
+- Updates project plan with completion status
+- Discovered need for password reset flow (added to milestone 1.3)
+
+Plan-Update: Mark auth system as complete, add password reset task
+```
+
+### Branch Naming
+Include milestone references:
+```
+feature/milestone-1.2-user-auth
+bugfix/milestone-1.1-api-validation
+refactor/milestone-2.0-database-schema
+```
+
+### Pull Request Templates
+Include plan context:
+```markdown
+## Plan Context
+- **Milestone**: [Which milestone this addresses]
+- **Tasks Completed**: [List of plan tasks finished]
+- **Plan Updates**: [Any changes needed to the plan]
+- **Dependencies**: [Any new dependencies discovered]
+
+## Implementation
+[Standard PR description]
+
+## Plan Impact
+- [ ] Project plan updated with completion status
+- [ ] New tasks added if discovered
+- [ ] Timeline impacts documented
+```
+
+## Documentation Synchronization
+
+### README Alignment
+Ensure README reflects:
+- Current project status from plan
+- Completed features and capabilities
+- Known limitations and future plans
+- Installation and setup requirements
+
+### Architecture Documentation
+Keep synchronized:
+- Architecture decisions in plan
+- Technical documentation
+- Code comments and structure
+- API documentation
+
+### Dependency Management
+Track in both plan and code:
+- External dependencies and versions
+- Internal module dependencies
+- Development tool requirements
+- Deployment dependencies
+
+## Testing Integration
+
+### Test Planning
+Align tests with plan:
+- Verify completed features match specifications
+- Test acceptance criteria from plan tasks
+- Validate architecture decisions
+- Check dependency integrations
+
+### Test Results Impact
+Update plan based on testing:
+- Mark tasks as truly complete after testing
+- Document any scope changes discovered
+- Add bug fixes to appropriate milestones
+- Update estimates based on test complexity
+
+## Continuous Integration
+
+### CI/CD Pipeline
+Include plan validation:
+```yaml
+# Example CI step
+- name: Validate Plan Sync
+  run: |
+    # Check if plan is updated
+    # Verify completed features are tested
+    # Ensure documentation is current
+```
+
+### Automated Checks
+- Plan freshness (updated within reasonable time)
+- Completion status accuracy
+- Documentation consistency
+- Dependency alignment
+
+## Quality Assurance
+
+### Regular Plan Reviews
+Schedule periodic reviews:
+- **Weekly**: Progress against current milestone
+- **Monthly**: Overall plan accuracy and timeline
+- **Per Milestone**: Complete plan validation
+- **Major Changes**: Architecture and scope review
+
+### Consistency Audits
+Regular checks for:
+- Plan vs. implementation alignment
+- Documentation currency
+- Dependency accuracy
+- Timeline realism
+
+### Stakeholder Communication
+Use plan for:
+- Progress reports
+- Timeline updates
+- Scope change discussions
+- Risk communication
+
+## Tool Integration
+
+### Project Management Tools
+Sync with external tools:
+- Export milestones to project trackers
+- Import external deadlines
+- Coordinate with team planning tools
+- Maintain single source of truth
+
+### Development Tools
+Integrate with:
+- IDE project settings
+- Linting and formatting rules
+- Build system configuration
+- Deployment scripts
+
+---
+
+**The project plan should be the central hub that connects all development activities.**

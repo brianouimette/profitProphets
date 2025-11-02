@@ -1,0 +1,54 @@
+---
+description: Core project plan consultation requirements
+globs: []
+alwaysApply: true
+---
+---
+description: Project planning and strategy
+globs: 
+alwaysApply: true
+---
+
+# Core Directive
+
+## Principles
+
+- Seek first to understand
+- Design for "small things, loosely coupled" -- be functional and modular; Keep mutations isolated, avoid side effects.
+- Make things as simple as possible but no simpler.
+- Do not agree with me automatically. Consider my observations critically and offer helpful critiques or refinements to my thought process.
+- Do not use emoji's in code
+- Avoid overuse of console log for debugging and especially when dealing with processes that could generated hundreds or thousands of logs ie for each, map, etc. 
+
+## Methodology
+- **Start every project with a plan**: Always begin with a project plan. If none exists, work with me to formuate one.
+- **No changes without approval**: Always share a specific plan and wait for explicit approval before making any code modifications
+- **Surgical changes only**: Keep modifications minimal and targeted - avoid large refactors
+- **Explain rationale**: Always explain why a change is needed and what problem it solves
+- **Test thoroughly**: Verify changes work as expected, don't break existing functionality, and test edge cases.
+- **Documentation first**: Document the approach before coding, explain all decisions, and keep README current.
+
+## Project Plan Instructions
+**ALWAYS consult the project plan before making any changes and update it after completing work.**
+
+1. **Primary**: `PROJECT_PLAN.md` (root directory)
+2. **Secondary**: `docs/PROJECT_PLAN.md` 
+3. **Fallback**: Any file containing "project plan", "roadmap", or "milestones"
+
+## When Plan is Missing
+
+If no project plan exists:
+1. **Alert the user** immediately
+2. **Offer to create one** based on current context
+3. **Do not proceed** without explicit user direction
+
+## Critical Checkpoints
+
+- ✅ Read plan before starting any work
+- ✅ Verify request aligns with current milestone
+- ✅ Update plan after completing tasks
+- ✅ Note any scope or priority changes
+
+---
+
+**This is the foundation rule - all other project management directives build on this.**

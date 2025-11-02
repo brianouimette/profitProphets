@@ -1,0 +1,31 @@
+# Oracle Cloud MySQL HeatWave Configuration
+# Copy this file to .env and update with your actual values
+
+# MySQL HeatWave Connection
+HEATWAVE_HOST=your-heatwave-endpoint.mysql.heatwave.oraclecloud.com
+HEATWAVE_PORT=3306
+HEATWAVE_USER=your_username
+HEATWAVE_PASSWORD=your_password
+HEATWAVE_DATABASE=nba_fantasy
+
+# Alternative names for compatibility
+MYSQL_HOST=your-heatwave-endpoint.mysql.heatwave.oraclecloud.com
+MYSQL_PORT=3306
+MYSQL_USER=your_username
+MYSQL_PASSWORD=your_password
+MYSQL_DATABASE=nba_fantasy
+
+# NBA Data Configuration
+NBA_DATA_DIRECTORY=./historical_data
+
+# ML Model Configuration
+MODEL_CACHE_DIR=./ml_models
+MAX_WORKERS=4
+BATCH_SIZE=1000
+
+# API Configuration
+ML_API_HOST=0.0.0.0
+ML_API_PORT=8001
+
+# Logging Configuration
+LOG_LEVEL=INFO

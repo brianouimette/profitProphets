@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Documentation style
+globs: 
+alwaysApply: true
+---
+
+1. Avoid technical jargon whenever possible. 
+2. Use the active voice.
+3. Use simple language for complex ideas, not the other way around.
+4. Be succint

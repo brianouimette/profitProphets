@@ -1,0 +1,136 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Design Thinking Principles
+globs: 
+alwaysApply: true
+---
+
+# Design Thinking & User Persona Requirements
+
+## Core Design Thinking Directive
+
+**Every project MUST have at least one user persona defined before any development work begins.**
+
+### User-Centered Approach
+- **Empathize first** - Understand user needs before building solutions
+- **Define problems clearly** - User personas guide problem definition
+- **Validate assumptions** - Test solutions against defined user needs
+- **Iterate based on user feedback** - Use personas to evaluate design decisions
+
+## User Persona Requirements
+
+### Mandatory Before Development
+1. **Project plan must include user personas** in a dedicated section
+2. **Pre-work analysis must verify persona completeness** before starting any milestone
+3. **All feature decisions must reference relevant user personas**
+4. **Testing and validation should consider persona needs**
+
+### User Persona Template
+Use this simplified format for every persona:
+
+```markdown
+### User Persona: [Persona Name]
+- **Primary User**: [Brief description of user type and context]
+- **Pain Points**: [List 2-4 key problems this user faces]
+- **Goals**: [List 2-4 primary objectives this user wants to achieve]
+- **Context**: [When/where/how they use the solution - optional]
+```
+
+## Integration with Project Workflow
+
+### During Project Plan Creation
+- **Alert user** if no personas are defined
+- **Require at least one persona** before approving any project plan
+- **Suggest persona research** if personas seem incomplete
+
+### During Pre-Work Analysis
+- **Verify persona alignment** - does the requested work serve defined users?
+- **Flag feature requests** that don't align with any existing persona
+- **Suggest persona updates** if new user types are discovered
+
+### During Development
+- **Reference personas** when making design/architecture decisions
+- **Question implementations** that don't clearly benefit defined users
+- **Suggest user testing** for features that significantly impact user experience
+
+### During Post-Work Updates
+- **Update personas** if new user insights are discovered
+- **Note persona validation** results from user testing or feedback
+- **Suggest new personas** if gaps in user coverage are identified
+
+## Persona Quality Standards
+
+### Complete Personas Include:
+- ✅ **Specific user description** (not just "users" or "people")
+- ✅ **Concrete pain points** (real problems, not assumptions)
+- ✅ **Clear goals** (what success looks like for this user)
+- ✅ **Actionable insights** (can guide design decisions)
+
+### Avoid Generic Personas:
+- ❌ "Users want the app to be fast" (too vague)
+- ❌ "People need a good experience" (not specific)
+- ❌ "Everyone wants it to work" (not actionable)
+
+### Good Persona Examples:
+```markdown
+### User Persona: Busy Marketing Manager
+- **Primary User**: Marketing managers at SMBs juggling multiple campaigns
+- **Pain Points**: Context switching between tools, losing track of campaign performance, manual reporting
+- **Goals**: Unified dashboard view, automated performance alerts, quick campaign adjustments
+
+### User Persona: Junior Developer
+- **Primary User**: Developers with 1-3 years experience learning new frameworks  
+- **Pain Points**: Overwhelming documentation, unclear setup instructions, fear of breaking things
+- **Goals**: Step-by-step guidance, safe experimentation environment, quick wins to build confidence
+```
+
+## Enforcement Protocol
+
+### Missing Personas
+If project plan lacks personas:
+1. **Stop work immediately**
+2. **Alert user to missing personas requirement**
+3. **Offer to help create personas** based on project context
+4. **Do not proceed** with development until personas are defined
+
+### Incomplete Personas
+If personas are too vague or generic:
+1. **Flag quality issues** with specific feedback
+2. **Suggest improvements** using the template
+3. **Request user research** if personas seem assumption-based
+4. **Proceed cautiously** while encouraging persona refinement
+
+### Persona-Feature Misalignment
+If requested work doesn't serve any defined persona:
+1. **Question the value** of the requested feature
+2. **Ask which persona** this serves
+3. **Suggest persona updates** if new user type discovered
+4. **Consider deferring work** until user value is clear
+
+## Communication Templates
+
+### Missing Personas Alert
+```
+🚨 **Design Thinking Requirement**
+- **Issue**: No user personas defined in project plan
+- **Impact**: Cannot validate user value of development work  
+- **Required**: Define at least one user persona before proceeding
+- **Template**: [Provide persona template]
+```
+
+### Persona Quality Feedback
+```
+📋 **Persona Quality Check**
+- **Current**: [Quote existing persona]
+- **Issues**: [Specific problems - too vague, not actionable, etc.]
+- **Suggestions**: [Concrete improvements needed]
+- **Template**: [Show improved version]
+```
+
+---
+
+**Design thinking starts with understanding users. No development work should begin without clearly defined user personas.**

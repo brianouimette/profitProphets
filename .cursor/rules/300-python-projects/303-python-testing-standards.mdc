@@ -1,0 +1,99 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Python testing standards and best practices
+globs: ["**/test_*.py", "**/tests/**/*.py"]
+alwaysApply: true
+---
+
+1. Test Structure
+   - Use pytest as the testing framework
+   - Follow AAA pattern (Arrange, Act, Assert)
+   - Keep tests independent and isolated
+   - Use descriptive test names (test_should_do_something_when_condition)
+   - Mirror source directory structure in tests
+   - Use conftest.py for shared fixtures
+
+2. Test Organization
+   - Group related tests in classes
+   - Use meaningful test class names
+   - Keep test files focused and small
+   - Use test categories (unit, integration, e2e)
+   - Separate test data from test logic
+   - Use test factories for complex objects
+
+3. Test Coverage
+   - Aim for 100% line coverage
+   - Focus on branch coverage for critical paths
+   - Use coverage.py for coverage reporting
+   - Exclude test files from coverage
+   - Document why code is excluded from coverage
+   - Run coverage in CI/CD pipeline
+
+4. Test Types
+   - Unit Tests:
+     - Test one thing at a time
+     - Mock external dependencies
+     - Test edge cases and error conditions
+     - Keep tests fast and focused
+   - Integration Tests:
+     - Test component interactions
+     - Use test databases
+     - Clean up test data
+     - Test real external services in staging
+   - End-to-End Tests:
+     - Test complete user flows
+     - Use realistic test data
+     - Test error recovery
+     - Keep tests maintainable
+
+5. Test Data
+   - Use fixtures for common test data
+   - Use factories for complex objects
+   - Keep test data minimal
+   - Use random data for edge cases
+   - Clean up test data after tests
+   - Use parameterized tests for multiple cases
+
+6. Mocking and Stubbing
+   - Use unittest.mock for mocking
+   - Mock external services
+   - Use dependency injection
+   - Mock time-dependent operations
+   - Use context managers for mocking
+   - Reset mocks between tests
+
+7. Performance Testing
+   - Use pytest-benchmark for benchmarks
+   - Test with realistic data volumes
+   - Measure memory usage
+   - Test concurrent operations
+   - Profile slow tests
+   - Keep performance tests separate
+
+8. Test Documentation
+   - Document test purpose
+   - Explain complex test setups
+   - Document test data requirements
+   - Keep test documentation up to date
+   - Use docstrings for test classes
+   - Document test categories
+
+9. CI/CD Integration
+   - Run tests in CI pipeline
+   - Fail on test failures
+   - Generate coverage reports
+   - Run different test types in parallel
+   - Cache test dependencies
+   - Use test matrices for different environments
+
+10. Best Practices
+    - Keep tests fast
+    - Make tests reliable
+    - Use meaningful assertions
+    - Test error conditions
+    - Use appropriate test doubles
+    - Follow testing pyramid

@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Work progress tracking
+globs: 
+alwaysApply: true
+---
+# During-Work Progress Tracking
+
+## Active Work Guidelines
+
+### 1. Reference Plan for Decisions
+- Consult plan when making architectural choices
+- Ensure decisions align with project direction
+- Consider impact on future milestones
+
+### 2. Discovery Tracking
+Note any discoveries that affect:
+- Future milestone planning
+- Technical dependencies
+- Scope or complexity estimates
+- Architecture decisions
+
+### 3. Progress Monitoring
+Track progress on current milestone items:
+- Which tasks are being worked on
+- Estimated completion status
+- Any blockers encountered
+- Changes in approach or scope
+
+### 4. Decision Documentation
+Log significant decisions made during work:
+- Technical approach choices
+- Architecture modifications
+- Scope adjustments
+- Dependency discoveries
+
+## Real-Time Updates
+
+### Progress Indicators
+- 🔄 **In Progress**: Currently working on this item
+- ⏸️ **Paused**: Temporarily blocked or deprioritized
+- 🔍 **Investigating**: Researching approach or dependencies
+- 🛠️ **Implementing**: Active development in progress
+
+### Discovery Notes
+Document discoveries in this format:
+```
+💡 **Discovery**: [Brief description]
+- **Impact**: [How this affects the plan]
+- **Action**: [What needs to be updated]
+- **Timeline**: [Effect on current/future milestones]
+```
+
+### Decision Log Format
+```
+🎯 **Decision**: [What was decided]
+- **Context**: [Why this decision was needed]
+- **Alternatives**: [Other options considered]
+- **Impact**: [Effect on plan/architecture]
+- **Date**: [When decided]
+```
+
+---
+
+**Keep the project plan current with real-time progress and discoveries.**

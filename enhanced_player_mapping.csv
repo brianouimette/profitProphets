@@ -1,0 +1,4 @@
+historical_id,mysportsfeeds_id,confidence,match_type,historical_name,mysportsfeeds_name,team_correlation,notes
+2544,1,1.0,Exact Name Match,LeBron James,LeBron James,False,Matched via Exact Name Match
+201939,2,1.0,Exact Name Match,Stephen Curry,Stephen Curry,False,Matched via Exact Name Match
+201142,3,1.0,Exact Name Match,Kevin Durant,Kevin Durant,False,Matched via Exact Name Match
