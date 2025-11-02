@@ -7,8 +7,18 @@ import os
 from typing import Optional
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables - try env.test first, then .env
+from pathlib import Path
+project_root = Path(__file__).parent.parent
+env_test = project_root / 'env.test'
+env_file = project_root / '.env'
+
+if env_test.exists():
+    load_dotenv(env_test, override=True)
+elif env_file.exists():
+    load_dotenv(env_file)
+else:
+    load_dotenv()
 
 class MLConfig:
     """Configuration class for ML service"""

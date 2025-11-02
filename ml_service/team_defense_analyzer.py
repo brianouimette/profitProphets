@@ -70,7 +70,10 @@ class TeamDefenseAnalyzer:
     def _merge_game_data(self, game_logs: pd.DataFrame, games: pd.DataFrame, players: pd.DataFrame) -> pd.DataFrame:
         """Merge game logs with games and players data"""
         try:
-            # Merge game logs with games
+            # Get game lineups to determine which team each player was on
+            lineups = db.get_game_lineups()
+            
+            # Merge game logs with games to get home/away teams
             merged = game_logs.merge(
                 games[['id', 'away_team_id', 'home_team_id', 'game_date']], 
                 left_on='game_id', 
@@ -78,19 +81,47 @@ class TeamDefenseAnalyzer:
                 how='left'
             )
             
+            # Merge with lineups to get the player's team for this game
+            if not lineups.empty:
+                merged = merged.merge(
+                    lineups[['game_id', 'player_id', 'team_id']],
+                    on=['game_id', 'player_id'],
+                    how='left'
+                )
+            else:
+                # Fallback: use player's current team if lineups not available
+                merged = merged.merge(
+                    players[['id', 'current_team_id']],
+                    left_on='player_id',
+                    right_on='id',
+                    how='left',
+                    suffixes=('', '_player')
+                )
+                merged['team_id'] = merged['current_team_id']
+            
             # Merge with players for position data
             merged = merged.merge(
                 players[['id', 'primary_position']], 
                 left_on='player_id', 
                 right_on='id', 
-                how='left'
+                how='left',
+                suffixes=('', '_pos')
             )
             
-            # Determine opponent team
-            merged['opponent_team_id'] = merged.apply(
-                lambda row: row['home_team_id'] if row['team_id'] == row['away_team_id'] else row['away_team_id'],
-                axis=1
-            )
+            # Determine opponent team: if player's team is home, opponent is away; if away, opponent is home
+            def get_opponent(row):
+                if pd.isna(row.get('team_id')):
+                    return None
+                if row['team_id'] == row['home_team_id']:
+                    return row['away_team_id']
+                elif row['team_id'] == row['away_team_id']:
+                    return row['home_team_id']
+                return None
+            
+            merged['opponent_team_id'] = merged.apply(get_opponent, axis=1)
+            
+            # Filter out rows where we couldn't determine opponent
+            merged = merged[merged['opponent_team_id'].notna()]
             
             # Add position category
             merged['position_category'] = merged['primary_position'].map(self.position_mapping)
@@ -104,26 +135,48 @@ class TeamDefenseAnalyzer:
     def _calculate_defense_stats(self, data: pd.DataFrame) -> pd.DataFrame:
         """Calculate defensive statistics for each team-position combination"""
         try:
+            # Calculate points from field goals and free throws (if not directly available)
+            if 'field_goals_made' in data.columns and 'three_pointers_made' in data.columns and 'free_throws_made' in data.columns:
+                data['points'] = (
+                    (data['field_goals_made'] - data['three_pointers_made']) * 2 +
+                    data['three_pointers_made'] * 3 +
+                    data['free_throws_made']
+                )
+            
             # Group by opponent team and position
-            defense_groups = data.groupby(['opponent_team_id', 'position_category']).agg({
-                'fantasy_points': ['mean', 'std', 'count', 'sum'],
-                'points': ['mean', 'std'],
-                'rebounds': ['mean', 'std'],
-                'assists': ['mean', 'std'],
-                'steals': ['mean', 'std'],
-                'blocks': ['mean', 'std']
-            }).reset_index()
+            agg_dict = {
+                'fantasy_points': ['mean', 'std', 'count', 'sum']
+            }
+            
+            # Add other stat aggregations if columns exist
+            stat_columns = ['rebounds', 'assists', 'steals', 'blocks', 'points']
+            for col in stat_columns:
+                if col in data.columns:
+                    agg_dict[col] = ['mean', 'std']
+            
+            defense_groups = data.groupby(['opponent_team_id', 'position_category']).agg(agg_dict).reset_index()
             
             # Flatten column names
-            defense_groups.columns = ['team_id', 'position', 'fantasy_points_allowed', 
-                                    'fantasy_points_std', 'games_played', 'total_fantasy_points',
-                                    'points_allowed', 'points_std', 'rebounds_allowed', 'rebounds_std',
-                                    'assists_allowed', 'assists_std', 'steals_allowed', 'steals_std',
-                                    'blocks_allowed', 'blocks_std']
+            cols = ['team_id', 'position']
+            for col in agg_dict.keys():
+                cols.append(f'{col}_allowed')
+                cols.append(f'{col}_std')
+                if col == 'fantasy_points':
+                    cols.extend(['games_played', f'total_{col}'])
+            
+            defense_groups.columns = cols[:len(defense_groups.columns)]
             
             # Calculate additional metrics
-            defense_groups['fantasy_points_per_game'] = defense_groups['total_fantasy_points'] / defense_groups['games_played']
-            defense_groups['defensive_rating'] = 100 - (defense_groups['fantasy_points_allowed'] / 50 * 100)  # Normalized rating
+            if 'total_fantasy_points' in defense_groups.columns and 'games_played' in defense_groups.columns:
+                defense_groups['fantasy_points_per_game'] = (
+                    defense_groups['total_fantasy_points'] / defense_groups['games_played']
+                )
+            
+            # Normalized defensive rating (lower fantasy points allowed = better defense)
+            if 'fantasy_points_allowed' in defense_groups.columns:
+                defense_groups['defensive_rating'] = 100 - (
+                    (defense_groups['fantasy_points_allowed'] / 50) * 100
+                ).clip(0, 100)
             
             # Add team names
             teams = db.get_teams()

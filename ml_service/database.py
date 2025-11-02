@@ -31,13 +31,23 @@ class MLDatabase:
                 self.engine = None
                 return
             
-            # Create SQLAlchemy engine for pandas operations
+            # Create SQLAlchemy engine for pandas operations with SSL support
             connection_string = (
                 f"mysql+mysqlconnector://{config.HEATWAVE_USER}:"
                 f"{config.HEATWAVE_PASSWORD}@{config.HEATWAVE_HOST}:"
                 f"{config.HEATWAVE_PORT}/{config.HEATWAVE_DATABASE}"
             )
-            self.engine = create_engine(connection_string, echo=False)
+            # Add SSL configuration for Oracle Cloud MySQL HeatWave
+            connect_args = {
+                'ssl_disabled': False,
+                'ssl_verify_cert': False,
+                'ssl_verify_identity': False
+            }
+            self.engine = create_engine(
+                connection_string, 
+                echo=False,
+                connect_args=connect_args
+            )
             
             # Test connection
             with self.engine.connect() as conn:
@@ -94,13 +104,16 @@ class MLDatabase:
             logger.error(f"❌ Error getting teams: {e}")
             return pd.DataFrame()
     
-    def get_games(self, limit: Optional[int] = None) -> pd.DataFrame:
+    def get_games(self, season: Optional[str] = None, limit: Optional[int] = None) -> pd.DataFrame:
         """Get all games data"""
         if not self._check_connection():
             return pd.DataFrame()
         
         try:
-            query = "SELECT * FROM games"
+            query = "SELECT * FROM games WHERE 1=1"
+            if season:
+                query += f" AND season = '{season}'"
+            query += " ORDER BY game_date DESC"
             if limit:
                 query += f" LIMIT {limit}"
             
@@ -160,6 +173,23 @@ class MLDatabase:
             return df
         except Exception as e:
             logger.error(f"❌ Error getting daily DFS data: {e}")
+            return pd.DataFrame()
+    
+    def get_game_lineups(self, limit: Optional[int] = None) -> pd.DataFrame:
+        """Get all game lineups data"""
+        if not self._check_connection():
+            return pd.DataFrame()
+        
+        try:
+            query = "SELECT * FROM game_lineups"
+            if limit:
+                query += f" LIMIT {limit}"
+            
+            df = pd.read_sql(query, self.engine)
+            logger.info(f"✅ Retrieved {len(df)} game lineups")
+            return df
+        except Exception as e:
+            logger.error(f"❌ Error getting game lineups: {e}")
             return pd.DataFrame()
     
     def get_player_injuries(self, limit: Optional[int] = None) -> pd.DataFrame:

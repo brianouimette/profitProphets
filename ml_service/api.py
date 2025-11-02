@@ -16,6 +16,8 @@ from ml_service.database import MLDatabase
 from ml_service.simulation_engine import SimulationEngine, PlayerProjection
 from ml_service.ml_model_trainer import MLModelTrainer
 from ml_service.advanced_analytics import AdvancedAnalytics
+from ml_service.value_analyzer import ValueAnalyzer
+from ml_service.injury_impact_analyzer import InjuryImpactAnalyzer
 import logging
 
 # Set up logging
@@ -40,6 +42,8 @@ app.add_middleware(
 
 # Initialize analyzers
 team_defense_analyzer = TeamDefenseAnalyzer()
+value_analyzer = ValueAnalyzer()
+injury_analyzer = InjuryImpactAnalyzer()
 db = MLDatabase()
 simulation_engine = SimulationEngine(db)
 ml_trainer = MLModelTrainer(db, config)
@@ -569,6 +573,116 @@ async def run_monte_carlo_risk_analysis(
         }
     except Exception as e:
         logger.error(f"Error in Monte Carlo risk analysis: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ===== VALUE ANALYSIS ENDPOINTS =====
+
+@app.get("/value/analysis/{game_date}")
+async def get_value_analysis(
+    game_date: str,
+    season: Optional[str] = Query(None, description="NBA season filter")
+):
+    """Get salary-based value analysis for a given date"""
+    try:
+        results = value_analyzer.get_value_analysis(game_date, season)
+        
+        if results.empty:
+            return {"message": "No value data available", "data": []}
+        
+        return {
+            "message": "Value analysis completed successfully",
+            "game_date": game_date,
+            "count": len(results),
+            "data": results.to_dict('records')
+        }
+    except Exception as e:
+        logger.error(f"Error in value analysis: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/value/tier-rankings/{game_date}")
+async def get_tier_rankings(
+    game_date: str,
+    tier: Optional[str] = Query(None, description="Salary tier: elite, high, mid, low, minimum")
+):
+    """Get value rankings by salary tier"""
+    try:
+        results = value_analyzer.get_tier_value_rankings(game_date, tier)
+        
+        if results.empty:
+            return {"message": "No tier rankings available", "data": []}
+        
+        return {
+            "message": "Tier rankings retrieved successfully",
+            "game_date": game_date,
+            "tier": tier or "all",
+            "count": len(results),
+            "data": results.to_dict('records')
+        }
+    except Exception as e:
+        logger.error(f"Error getting tier rankings: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/value/best-values/{game_date}")
+async def get_best_values(
+    game_date: str,
+    limit: int = Query(20, description="Number of players to return")
+):
+    """Get the best value players across all tiers"""
+    try:
+        results = value_analyzer.get_best_values(game_date, limit)
+        
+        if results.empty:
+            return {"message": "No value players found", "data": []}
+        
+        return {
+            "message": "Best value players retrieved successfully",
+            "game_date": game_date,
+            "limit": limit,
+            "count": len(results),
+            "data": results.to_dict('records')
+        }
+    except Exception as e:
+        logger.error(f"Error getting best values: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ===== INJURY IMPACT ENDPOINTS =====
+
+@app.get("/injury/impact/{player_id}")
+async def get_injury_impact(player_id: int):
+    """Analyze injury impact and find replacement players"""
+    try:
+        analysis = injury_analyzer.analyze_injury_impact(player_id)
+        
+        if 'error' in analysis:
+            raise HTTPException(status_code=404, detail=analysis['error'])
+        
+        return {
+            "message": "Injury impact analysis completed successfully",
+            "player_id": player_id,
+            "data": analysis
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error analyzing injury impact: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/injury/all-impacts")
+async def get_all_injury_impacts():
+    """Get impact analysis for all active injuries"""
+    try:
+        results = injury_analyzer.get_all_active_injuries_impact()
+        
+        if results.empty:
+            return {"message": "No active injuries found", "data": []}
+        
+        return {
+            "message": "All injury impacts analyzed successfully",
+            "count": len(results),
+            "data": results.to_dict('records')
+        }
+    except Exception as e:
+        logger.error(f"Error analyzing all injuries: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
