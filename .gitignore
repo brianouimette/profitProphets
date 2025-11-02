@@ -159,10 +159,9 @@ ml_models/
 *.h5
 *.joblib
 
-# Large CSV data files (optional - can track if needed, but they're large)
-# Uncomment to exclude:
-# *.csv
-# historical_data/
+# Large CSV data files (excluded due to GitHub file size limits)
+*.csv
+historical_data/
 
 # Analysis outputs (can track these if useful)
 # *_analysis.json
